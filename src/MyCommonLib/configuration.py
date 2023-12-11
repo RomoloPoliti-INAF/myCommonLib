@@ -54,7 +54,7 @@ class Configure:
         self._logFile = None
         self.console: Console = softMode.console
         self._dict_exclude=['log']
-        self.log=logging.Logger()
+        self.log=logging.Logger('default')
 
     @property
     def logFile(self):
