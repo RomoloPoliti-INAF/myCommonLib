@@ -1,5 +1,9 @@
 # MyCommonLib
 
+## 0.1.0.devel.3
+
+- fix the logging when the logger is not initialized
+
 ## 0.1.0.devel.2
 
 - fis bug in the log caller and verbose display
