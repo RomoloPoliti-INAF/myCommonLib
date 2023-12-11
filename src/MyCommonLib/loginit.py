@@ -1,5 +1,5 @@
 import logging
-import os
+import ioutil
 from pathlib import Path
 
 from MyCommonLib.constants import FMODE
@@ -29,9 +29,9 @@ def logInit(logFile: Path= None, logger:str="MyLogger", logLevel:int=20, fileMod
                                   datefmt='%m/%d/%Y %I:%M:%S %p',
                                   style="{")
     if logFile is None:
-        stream_handler = logging.StreamHandler(os.devnull)
-        stream_handler.setFormatter(formatter)
-        a1.addHandler(stream_handler)
+        null_handler = logging.NullHandler()
+        null_handler.setFormatter(formatter)
+        a1.addHandler(null_handler)
     else:
         file_handler = logging.FileHandler(logFile, mode=fileMode)
         file_handler.setFormatter(formatter)
