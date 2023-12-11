@@ -54,7 +54,8 @@ class Configure:
         self._logFile = None
         self.console: Console = softMode.console
         self._dict_exclude=['log']
-        self.log=logging.Logger('default')
+        self.log = logInit(logger=self._logger,
+                           logLevel=logging.INFO)
 
     @property
     def logFile(self):
@@ -64,8 +65,15 @@ class Configure:
     def logFile(self, value: Path):
         
         self._logFile = value.expanduser()
-        self.log = logInit(logFile=value, logger=self._logger,
-                           logLevel=logging.INFO, fileMode=FMODE.APPEND)
+        self.log.Handler.close()
+        file_handler = logging.FileHandler(self._logFile, mode=FMODE.APPEND)
+        formatter = logging.Formatter('{asctime} | {levelname:8} | {name:10} | {module:12} | {funcName:20} | {lineno:4} | {message}',
+                                      datefmt='%m/%d/%Y %I:%M:%S %p',
+                                      style="{")
+        file_handler.setFormatter(formatter)
+        self.log.addHandler(file_handler)
+        # self.log = logInit(logFile=value, logger=self._logger,
+        #                    logLevel=logging.INFO, fileMode=FMODE.APPEND)
         self.log_file = value.as_posix()
 
     @property
