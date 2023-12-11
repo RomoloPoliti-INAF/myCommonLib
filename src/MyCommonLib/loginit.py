@@ -28,7 +28,7 @@ def logInit(logFile: Path= None, logger:str="MyLogger", logLevel:int=20, fileMod
                                   datefmt='%m/%d/%Y %I:%M:%S %p',
                                   style="{")
     if logFile is None:
-        stream_handler = logging.StreamHandler()
+        stream_handler = logging.StreamHandler(stream=None)
         stream_handler.setFormatter(formatter)
         a1.addHandler(stream_handler)
     else:
