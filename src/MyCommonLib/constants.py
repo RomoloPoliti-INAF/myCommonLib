@@ -28,6 +28,11 @@ class FMODE:
     APPEND = 'a'
 
 
+class COLOR:
+    console = 'dodger_blue3'
+    error = 'red'
+    panel = 'yellow'
+
 progresSet = [SpinnerColumn(finished_text=':thumbs_up-emoji:'),
               "[progress.description]{task.description}",
               BarColumn(finished_style='green'),
