@@ -53,6 +53,7 @@ class Configure:
         self.configFile = None
         self._logFile = None
         self.console: Console = softMode.console
+        self._dict_exclude=['log']
 
     @property
     def logFile(self):
@@ -60,6 +61,7 @@ class Configure:
 
     @logFile.setter
     def logFile(self, value: Path):
+        
         self._logFile = value.expanduser()
         self.log = logInit(logFile=value, logger=self._logger,
                            logLevel=logging.INFO, fileMode=FMODE.APPEND)
