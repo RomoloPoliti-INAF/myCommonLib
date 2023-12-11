@@ -65,7 +65,7 @@ class Configure:
     def logFile(self, value: Path):
         
         self._logFile = value.expanduser()
-        self.log.Handler.close()
+        self.log.removeHandler(self.log.handlers[0])
         file_handler = logging.FileHandler(self._logFile, mode=FMODE.APPEND)
         formatter = logging.Formatter('{asctime} | {levelname:8} | {name:10} | {module:12} | {funcName:20} | {lineno:4} | {message}',
                                       datefmt='%m/%d/%Y %I:%M:%S %p',
