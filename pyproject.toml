@@ -1,7 +1,7 @@
 [project]
 name = "MyCommonLib"
-version = "0.1.0d1"
-description="SIMBIO-SYS data production and calibration pipeline"
+version = "0.1.0"
+description="Common library"
 dependencies = [
     "rich",
     "PyYaml", 
@@ -32,5 +32,5 @@ docs = ["sphinx"]
 requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools_scm]
+
 
