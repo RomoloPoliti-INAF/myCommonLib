@@ -9,3 +9,5 @@ Common library used in several project
 ```python
 from MyCommonLib import Configure, Vers
 ```
+
+### Setup the logger Name

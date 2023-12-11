@@ -5,7 +5,7 @@ from pathlib import Path, PosixPath
 import yaml
 from rich.console import Console
 from rich.panel import Panel
-from software_mode import softMode
+from MyCommonLib.software_mode import softMode
 
 from MyCommonLib.constants import COLOR, FMODE
 from MyCommonLib.dictman import dict2Table
