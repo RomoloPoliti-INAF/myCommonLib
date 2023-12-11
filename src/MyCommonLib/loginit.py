@@ -1,5 +1,4 @@
 import logging
-import ioutil
 from pathlib import Path
 
 from MyCommonLib.constants import FMODE
