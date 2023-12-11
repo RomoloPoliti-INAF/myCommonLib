@@ -24,12 +24,17 @@ def logInit(logFile: Path, logger, logLevel=20, fileMode=FMODE.APPEND) -> loggin
     a1 = CustomLogger(logger)
     a1.setLevel(logLevel)
     # Aggiungi un handler per scrivere nel file di log
-    file_handler = logging.FileHandler(logFile, mode=fileMode)
     formatter = logging.Formatter('{asctime} | {levelname:8} | {name:10} | {module:12} | {funcName:20} | {lineno:4} | {message}',
                                   datefmt='%m/%d/%Y %I:%M:%S %p',
                                   style="{")
-    file_handler.setFormatter(formatter)
-    a1.addHandler(file_handler)
+    if logFile is None:
+        stream_handler = logging.StreamHandler()
+        stream_handler.setFormatter(formatter)
+        a1.addHandler(stream_handler)
+    else:
+        file_handler = logging.FileHandler(logFile, mode=fileMode)
+        file_handler.setFormatter(formatter)
+        a1.addHandler(file_handler)
     if flag:
         a1.warning(
             f"Log level {oldLevel} is not valid. Used the default value 20")
