@@ -2,7 +2,7 @@ import logging
 from pathlib import Path
 
 from MyCommonLib.constants import FMODE
-from MyCommonLib.customLogger import CustomLogger
+from MyCommonLib.customLogger import CustomLogger, SpecialHandler
 
 __doc__ = "Inizialize the logger"
 __version__ = "2.0.0"
@@ -28,7 +28,7 @@ def logInit(logFile: Path= None, logger:str="MyLogger", logLevel:int=20, fileMod
                                   datefmt='%m/%d/%Y %I:%M:%S %p',
                                   style="{")
     if logFile is None:
-        null_handler = logging.NullHandler()
+        null_handler = SpecialHandler()
         null_handler.setFormatter(formatter)
         a1.addHandler(null_handler)
     else:
