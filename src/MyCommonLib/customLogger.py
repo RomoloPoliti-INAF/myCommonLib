@@ -18,7 +18,7 @@ def _is_internal_frame(frame):
 
 class SpecialHandler(logging.Handler):
     def emit(self, record) -> None:
-        softMode.console.print(f"{getattr(MSG,record.levelname.upper())}{record.message}")
+        pass
 
 class CustomLogger(logging.Logger):
     def info(self, msg, verbosity=0, *args, **kwargs):
