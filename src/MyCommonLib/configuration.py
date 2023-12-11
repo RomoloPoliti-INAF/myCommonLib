@@ -75,11 +75,13 @@ class Configure:
     def debug(self, value):
         self._debug = value
         if value:
-            self.log.setLevel(logging.DEBUG)
-            self.log.debug("Set the loglevel to Debug", verbosing=1)
+            if self._logFile is not None:
+                self.log.setLevel(logging.DEBUG)
+                self.log.debug("Set the loglevel to Debug", verbosing=1)
             softMode.debug = value
         else:
-            self.log.setLevel(logging.INFO)
+            if self._logFile is not None:
+                self.log.setLevel(logging.INFO)
             softMode.debug = False
         self.debug_status = value
 
