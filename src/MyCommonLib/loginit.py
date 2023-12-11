@@ -8,7 +8,7 @@ __doc__ = "Inizialize the logger"
 __version__ = "2.0.0"
 
 
-def logInit(logFile: Path, logger, logLevel=20, fileMode=FMODE.APPEND) -> logging:
+def logInit(logFile: Path= None, logger:str="MyLogger", logLevel:int=20, fileMode:str=FMODE.APPEND) -> logging:
 
     flag = False
     if not logLevel in [0, 10, 20, 30, 40, 50]:
