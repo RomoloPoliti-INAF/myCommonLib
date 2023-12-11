@@ -93,6 +93,7 @@ class Configure:
     def verbose(self, value: int):
         self._verbose = value
         softMode.verbose = value
+        self.verbose_status=f"Level {value}"
 
     def verbosity(self, level: int = 0) -> bool:
         return softMode.check(level)
