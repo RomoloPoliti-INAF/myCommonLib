@@ -1,5 +1,9 @@
 # MyCommonLib
 
+## 0.1.1.devel.1
+
+- fixed bugs. stable version
+
 ## 0.1.0.devel.3
 
 - fix the logging when the logger is not initialized
