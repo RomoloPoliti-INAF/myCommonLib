@@ -4,10 +4,37 @@
 
 Common library used in several project
 
-## How to
+## Installation
+
+To install you can run the command
+
+```console
+python3 -m pip install git+https://github.com/RomoloPoliti-INAF/myCommonLib
+```
+or clone the project and install using the command 
+
+```python
+python3 -m pip install .
+```
+
+If you use the *pyprojext.toml* file you need to add the line 
+
+```toml
+"myCommonLib@git+https://github.com/RomoloPoliti-INAF/myCommonLib",
+```
+in the *dependencies* array.
+
+## Usage
 
 ```python
 from MyCommonLib import Configure, Vers
 ```
+
+## Contents
+
+### Vers Class
+
+**Vers** class
+
 
 ### Setup the logger Name
