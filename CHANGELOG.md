@@ -1,5 +1,9 @@
 # MyCommonLib
 
+## 0.2.0
+
+- fix string for compatibility to Python3.8
+
 ## 0.1.1.devel.1
 
 - fixed bugs. stable version

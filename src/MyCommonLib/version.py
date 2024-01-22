@@ -35,8 +35,7 @@ class Vers:
         if self.type.lower() == 'f':
             nVer = f"{self.major}.{self.minor}.{self.bug}"
         else:
-            nVer = f"{self.major}.{self.minor}.{
-                self.bug}.{code[self.type]}.{self.build}"
+            nVer = f"{self.major}.{self.minor}.{self.bug}.{code[self.type]}.{self.build}"
         return nVer
 
     def short(self)->str:
