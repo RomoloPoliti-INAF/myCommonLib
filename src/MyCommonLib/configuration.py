@@ -54,6 +54,8 @@ class Configure:
         self._logFile = None
         self.console: Console = softMode.console
         self._dict_exclude=['log']
+        
+    def start_log(self):
         self.log = logInit(logger=self._logger,
                            logLevel=logging.INFO)
 

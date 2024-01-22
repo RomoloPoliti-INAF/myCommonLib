@@ -1,5 +1,8 @@
 # MyCommonLib
 
+## 0.2.1
+. fix a bug in the set of logger name. required to start the logger
+
 ## 0.2.0
 
 - fix string for compatibility to Python3.8
