@@ -23,16 +23,16 @@ def dict2Table(item: dict, sep: str = '=') -> Table:
     dt.add_column()
     dt.add_column()
     for elem in item.keys():
-        if type(item[elem]) is list:
-            if type(item[elem][0]) is str:
+        if isinstance(item[elem],list):
+            if isinstance(item[elem][0], str):
                 dt.add_row(conv(elem), f" {sep} ", Markdown(item[elem][0]))
                 for subElem in item[elem][1:]:
                     dt.add_row("", f" {sep} ", Markdown(subElem))
-            elif type(item[elem][0]) is int or type(item[elem][0]) is bool:
+            elif isinstance(item[elem][0], int) or isinstance(item[elem][0], bool):
                 dt.add_row(conv(elem), f" {sep} ", str(item[elem][0]))
                 for subElem in item[elem][1:]:
                     dt.add_row("", f" {sep} ", str(subElem))
-            elif type(item[elem][0]) is dict:
+            elif isinstance(item[elem][0],dict):
                 dt.add_row(
                     elem,
                     " ",
