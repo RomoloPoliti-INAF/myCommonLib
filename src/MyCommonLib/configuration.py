@@ -7,11 +7,9 @@ from rich.console import Console
 from rich.panel import Panel
 from MyCommonLib.software_mode import softMode
 
-from MyCommonLib.constants import COLOR, FMODE
+from MyCommonLib.constants import COLOR, FMODE, defLogFile
 from MyCommonLib.dictman import dict2Table
 from MyCommonLib.loginit import logInit
-
-defLogFile = 'software_logger.log'
 
 
 class Loader(yaml.SafeLoader):
@@ -30,21 +28,46 @@ class Loader(yaml.SafeLoader):
 Loader.add_constructor('!include', Loader.include)
 
 
-def read_yaml(filepath: Path) -> dict:
-    ''' Read a yaml file'''
-    with open(filepath, 'r') as f:
+def read_yaml(fileName: Path) -> dict:
+    """
+    Read a YAML File with the extended loader
+
+    Args:
+        fileName (Path): The file to load
+
+    Raises:
+        FileNotFoundError: The file to read not exists
+
+    Returns:
+        dict: The dictionary in the file
+    """
+    if type(fileName) is str:
+        fileName = Path(fileName)
+    if not fileName.exists():
+        raise FileNotFoundError
+    with open(fileName, FMODE.READ) as f:
         # return yaml.safe_load(f)
         return yaml.load(f, Loader)
 
 
-def write_yamls(data, fileName):
+def write_yaml(data:dict, fileName:Path, overwrite:bool=False):
+
+    if not type(data) is dict:
+        raise TypeError
+    if type(fileName) is str:
+        fileName=Path(fileName)
+    if fileName.exists() and not overwrite:
+        raise FileExistsError
     with open(fileName, FMODE.WRITE) as file:
         documents = yaml.dump(data, file)
 
 
 class Configure:
     """Configuration class"""
-
+    
+    configFile:Path = None
+    """Name of the configuration file to load"""
+    
     def __init__(self):
         self._name = "Software Configuration"
         self._logger = 'MyLogger'
@@ -107,6 +130,16 @@ class Configure:
         self.verbose_status=f"Level {value}"
 
     def verbosity(self, level: int = 0) -> bool:
+        """
+        Compare the value with the verbosity level stored in the configuration class.
+        Usually is used to check if some information will be printed or not
+
+        Args:
+            level (int, optional): level to check. Defaults to 0.
+
+        Returns:
+            bool: True if the current level is higher or equal to the configurated one
+        """
         return softMode.check(level)
 
     def toDict(self) -> dict:
@@ -127,6 +160,6 @@ class Configure:
 
     def setLog(self, value: Path = None, default: bool = False):
         if default:
-            self.logFile = Path('/val/log').joinpath(defLogFile)
+            self.logFile = Path('/var/log').joinpath(defLogFile)
         else:
             self.logFile = value

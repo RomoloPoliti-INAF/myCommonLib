@@ -34,7 +34,7 @@ from MyCommonLib import Configure, Vers
 
 ### Vers Class
 
-**Vers** class
+Class for the manipulation of objects version following the [Semantic Versioning](https://semver.org/)
 
 
 ### Setup the logger Name

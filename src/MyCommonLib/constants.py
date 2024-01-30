@@ -43,5 +43,7 @@ progresSet = [SpinnerColumn(finished_text=':thumbs_up-emoji:'),
 
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
+defLogFile = 'software_logger.log'
+
 debug_help_text = "Enable :point_right: [yellow]debug mode[/yellow] :point_left:"
 verbose_help_text = "Enable :point_right: [yellow]verbose mode[/yellow] :point_left:"
