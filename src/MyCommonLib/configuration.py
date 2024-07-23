@@ -112,7 +112,7 @@ class Configure:
         if value:
             if self._logFile is not None:
                 self.log.setLevel(logging.DEBUG)
-                self.log.debug("Set the loglevel to Debug", verbosing=1)
+                self.log.debug("Set the loglevel to Debug", verbosity=1)
             softMode.debug = value
         else:
             if self._logFile is not None:

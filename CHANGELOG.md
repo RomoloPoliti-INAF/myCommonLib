@@ -1,7 +1,12 @@
 # MyCommonLib
 
+## 0.3.2
+
+- fix log verbosity
+
 ## 0.2.1
-. fix a bug in the set of logger name. required to start the logger
+
+- fix a bug in the set of logger name. required to start the logger
 
 ## 0.2.0
 
