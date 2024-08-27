@@ -1,7 +1,8 @@
 from rich.progress import BarColumn, SpinnerColumn, TimeElapsedColumn
 from pathlib import Path
 
-VERSION = (0, 3, 1, 'd', 1)
+VERSION = (0, 3, 5, 'd', 1)
+
 progEpilog = "- For any information or suggestion please contact " \
     "[bold magenta]Romolo.Politi@inaf.it[/bold magenta]"
 

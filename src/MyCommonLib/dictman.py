@@ -25,13 +25,13 @@ def dict2Table(item: dict, sep: str = '=') -> Table:
     for elem in item.keys():
         if isinstance(item[elem],list):
             if isinstance(item[elem][0], str):
-                dt.add_row(conv(elem), f" {sep} ", Markdown(item[elem][0]))
+                dt.add_row(conv(elem), f" {sep} ", f"[bold]{item[elem][0]}[/bold]")
                 for subElem in item[elem][1:]:
-                    dt.add_row("", f" {sep} ", Markdown(subElem))
+                    dt.add_row("", f" {sep} ", f"[bold]{subElem}[/bold]")
             elif isinstance(item[elem][0], int) or isinstance(item[elem][0], bool):
-                dt.add_row(conv(elem), f" {sep} ", str(item[elem][0]))
+                dt.add_row(conv(elem), f" {sep} ", f"[bold]{str(item[elem][0])}[/bold]")
                 for subElem in item[elem][1:]:
-                    dt.add_row("", f" {sep} ", str(subElem))
+                    dt.add_row("", f" {sep} ", f"[bold]{str(subElem)}[/bold]")
             elif isinstance(item[elem][0],dict):
                 dt.add_row(
                     elem,
@@ -40,16 +40,16 @@ def dict2Table(item: dict, sep: str = '=') -> Table:
                 )
                 # for subElem in item[elem][1:]:
                 #     dt.add_row('','' ,dict2Table(subElem))
-        elif type(item[elem]) is int:
+        elif isinstance(item[elem],int):
             dt.add_row(conv(elem), f" {sep} ",
                        f"[cyan]{str(item[elem])}[/cyan]")
-        elif type(item[elem]) is bool:
+        elif isinstance(item[elem],bool):
             dt.add_row(conv(elem), f" {sep} ", f"[red]{str(item[elem])}[/red]")
-        elif type(item[elem]) is dict:
+        elif isinstance(item[elem], dict):
             stb = dict2Table(item[elem])
             dt.add_row(conv(elem), f" {sep} ", stb)
-        elif type(item[elem]) is PosixPath:
-            dt.add_row(conv(elem), f" {sep} ", str(item[elem]))
+        elif isinstance(item[elem], PosixPath):
+            dt.add_row(conv(elem), f" {sep} ", f"[blue]{str(item[elem])}[/blue]")
         elif item[elem] is None:
             dt.add_row(conv(elem), f" {sep} ", "[blue]None[/blue]")
         else:

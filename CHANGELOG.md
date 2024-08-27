@@ -1,5 +1,11 @@
 # MyCommonLib
 
+## 0.3.5
+
+- fix dict2Table
+- fix comparison between Versions
+- forced int in software mode (compatibility with oter packages)
+
 ## 0.3.2
 
 - fix log verbosity
