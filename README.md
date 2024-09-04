@@ -9,7 +9,7 @@ Common library used in several project
 To install you can run the command
 
 ```console
-python3 -m pip install git+https://github.com/RomoloPoliti-INAF/myCommonLib
+python3 -m pip install MyCommonLib
 ```
 or clone the project and install using the command 
 
@@ -20,7 +20,7 @@ python3 -m pip install .
 If you use the *pyprojext.toml* file you need to add the line 
 
 ```toml
-"myCommonLib@git+https://github.com/RomoloPoliti-INAF/myCommonLib",
+"MyCommonLib",
 ```
 in the *dependencies* array.
 
