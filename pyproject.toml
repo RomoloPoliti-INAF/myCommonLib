@@ -21,7 +21,7 @@ classifiers = [
 
 [project.urls]
 Repository = "https://github.com/RomoloPoliti-INAF/myCommonLib"
-Changelog = "https://github.com/RomoloPoliti-INAF/myCommonLib/CHANGELOG.md"
+Changelog = "https://github.com/RomoloPoliti-INAF/myCommonLib/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 docs = ["sphinx"]

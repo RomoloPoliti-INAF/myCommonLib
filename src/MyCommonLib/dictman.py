@@ -18,6 +18,8 @@ def conv(txt: str):
 
 
 def dict2Table(item: dict, sep: str = '=') -> Table:
+    if not isinstance(item, dict):
+        raise ValueError("item must be a dictionary")
     dt = Table.grid()
     dt.add_column(style="bold", justify='right')
     dt.add_column()
