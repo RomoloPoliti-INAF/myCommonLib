@@ -91,6 +91,8 @@ class Configure:
     def logFile(self, value: Path):
         
         self._logFile = value.expanduser()
+        if not self._logFile.parent.exists():
+            self._logFile.parent.mkdir(parents=True)
         self.log.removeHandler(self.log.handlers[0])
         file_handler = logging.FileHandler(self._logFile, mode=FMODE.APPEND)
         formatter = logging.Formatter('{asctime} | {levelname:8} | {name:10} | {module:12} | {funcName:20} | {lineno:4} | {message}',

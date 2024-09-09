@@ -49,7 +49,7 @@ def dict2Table(item: dict, sep: str = '=') -> Table:
             dt.add_row(conv(elem), f" {sep} ", f"[red]{str(item[elem])}[/red]")
         elif isinstance(item[elem], dict):
             stb = dict2Table(item[elem])
-            dt.add_row(conv(elem), f" {sep} ", stb)
+            dt.add_row(conv(elem), " : ", stb)
         elif isinstance(item[elem], PosixPath):
             dt.add_row(conv(elem), f" {sep} ", f"[blue]{str(item[elem])}[/blue]")
         elif item[elem] is None:

@@ -1,5 +1,9 @@
 # MyCommonLib
 
+## Vesrion 0.3.7
+
+- fix log folder existence
+
 ## Version 0.3.6
 
 - add check type in dict2Table
