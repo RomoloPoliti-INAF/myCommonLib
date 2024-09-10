@@ -1,5 +1,9 @@
 # MyCommonLib
 
+## Version 0.4.1
+
+- bug fixing
+
 ## Version 0.4.0 10/09/2024
 
 - add log_formatter variable to the logger
