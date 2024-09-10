@@ -82,7 +82,8 @@ class Configure:
         
     def start_log(self):
         self.log = logInit(logger=self._logger,
-                           logLevel=logging.INFO)
+                           logLevel=logging.INFO,
+                           formatter=self.log_formatter)
 
     @property
     def logFile(self):
