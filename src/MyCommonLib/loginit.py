@@ -8,7 +8,7 @@ __doc__ = "Inizialize the logger"
 __version__ = "2.0.0"
 
 
-def logInit(logFile: Path= None, logger:str="MyLogger", logLevel:int=20, fileMode:str=FMODE.APPEND) -> logging:
+def logInit(logFile: Path= None, logger:str="MyLogger", logLevel:int=20, fileMode:str=FMODE.APPEND, formatter:str=None) -> logging:
 
     flag = False
     if not logLevel in [0, 10, 20, 30, 40, 50]:
@@ -19,12 +19,14 @@ def logInit(logFile: Path= None, logger:str="MyLogger", logLevel:int=20, fileMod
     # logging.basicConfig(filename=logFile,
     #                     level=logLevel,
     #                     filemode=fileMode,
-    #                     format='%(asctime)s | %(levelname)-8s | %(name)-7s | %(module)-12s | %(funcName)-20s | %(message)s',
+    #                     format='%(asctime)s | %(levelname)-8s | %(name)-7s | %(module)-20s | %(funcName)-20s | %(message)s',
     #                     datefmt='%m/%d/%Y %I:%M:%S %p')
     a1 = CustomLogger(logger)
     a1.setLevel(logLevel)
     # Aggiungi un handler per scrivere nel file di log
-    formatter = logging.Formatter('{asctime} | {levelname:8} | {name:10} | {module:12} | {funcName:20} | {lineno:4} | {message}',
+    if formatter is None:
+        formatter = '{asctime} | {levelname:8} | {name:10} | {module:12} | {funcName:20} | {lineno:4} | {message}'
+    formatter = logging.Formatter(formatter,
                                   datefmt='%m/%d/%Y %I:%M:%S %p',
                                   style="{")
     if logFile is None:

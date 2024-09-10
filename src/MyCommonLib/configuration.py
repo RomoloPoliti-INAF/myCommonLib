@@ -78,6 +78,7 @@ class Configure:
         self.console: Console = softMode.console
         self._dict_exclude=['log']
         self.log=None
+        self.log_formatter = '{asctime} | {levelname:8} | {name:10} | {module:12} | {funcName:20} | {lineno:4} | {message}'
         
     def start_log(self):
         self.log = logInit(logger=self._logger,
@@ -95,7 +96,7 @@ class Configure:
             self._logFile.parent.mkdir(parents=True)
         self.log.removeHandler(self.log.handlers[0])
         file_handler = logging.FileHandler(self._logFile, mode=FMODE.APPEND)
-        formatter = logging.Formatter('{asctime} | {levelname:8} | {name:10} | {module:12} | {funcName:20} | {lineno:4} | {message}',
+        formatter = logging.Formatter(self.log_formatter,
                                       datefmt='%m/%d/%Y %I:%M:%S %p',
                                       style="{")
         file_handler.setFormatter(formatter)
