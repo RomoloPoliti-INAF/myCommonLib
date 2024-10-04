@@ -1,5 +1,11 @@
 # MyCommonLib
 
+## Version 0.5.0
+
+- Update the class Vers. 
+    - The patch number is now not mandatory.
+    - add the __ne__ method
+
 ## Version 0.4.1
 
 - bug fixing
