@@ -4,7 +4,7 @@
 
 - Update the class Vers. 
     - The patch number is now not mandatory.
-    - add the __ne__ method
+    - add the \_\_ne__ method
 
 ## Version 0.4.1
 
