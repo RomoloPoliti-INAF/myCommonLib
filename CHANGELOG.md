@@ -1,5 +1,13 @@
 # MyCommonLib
 
+## Version 0.6.0
+
+- Added three functions for the string manipulation:
+    - snake_case
+    - camel_case
+    - sentence_case
+- add filemode option to startLog method
+
 ## Version 0.5.0
 
 - Update the class Vers. 
