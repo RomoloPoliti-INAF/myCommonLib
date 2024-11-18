@@ -1,4 +1,4 @@
-name: Python package
+name: Python Poetry Package
 on:
   release:
     types: [published]
