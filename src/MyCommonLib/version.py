@@ -1,3 +1,4 @@
+import re
 ###################################
 # Versioning Class
 ###################################
@@ -9,11 +10,12 @@
 #
 # History:
 #
+# 2024-11-18: accept string as imput (1.2.0)
 # 2024-10-04: The patch is now not mandatory (1.1.0)
 # 2021-09-07: First implementation of the class (1.0.0)
 
 
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 
 code = {"d": "devel", "a": "alpha", "b": "beta",
         "rc": "ReleaseCandidate", "f": "Final"}
@@ -42,7 +44,25 @@ class Vers:
 
     def __init__(self, ver: tuple | str) -> None:
         if isinstance(ver, str):
-            ver = tuple(map(int, ver.split('.')))
+            a= re.match(r'(\d+)\.(\d+)(?:\.(\d+))?(?:-(\w+)(?:\.(\d+))?)?', ver)
+            prt=list(a.groups())
+            if prt[3] is not None :
+                if prt[3].lower() in 'development':
+                    prt[3]='d'
+                elif prt[3].lower() in 'alpha':
+                    prt[3]='a'
+                elif prt[3].lower() in 'beta':
+                    prt[3]='b'
+                elif prt[3].lower() in 'releasecandidate':
+                    prt[3]='rc'
+                elif prt[3].lower() in 'final':
+                    prt[3]='f'
+            else:
+                prt[3]='f'
+            if prt[3] is not None and prt[4] is None:
+                prt[4]=1
+            ver = tuple(prt)
+        
         self._len = 3
         if len(ver) < 3:
             self.major, self.minor, *extra = ver
@@ -58,7 +78,7 @@ class Vers:
                     f"The fourth element of the version number must be a string")
             if not self.type in code.keys():
                 raise ValueError(f"the fourth element of the version mus be one of {
-                                 ','.join(code.keys())}")
+                                ','.join(code.keys())}")
         self.build = extra[1] if len(extra) > 1 else None
 
     def full(self) -> str:

@@ -1,6 +1,6 @@
 # myCommonLib
-![Version 0.6.0](https://img.shields.io/badge/version-0.6.0-blue?style=plastic)
-![Language Python 3.12.4](https://img.shields.io/badge/python-3.12.4-orange?style=plastic&logo=python)
+![Version 0.7.0](https://img.shields.io/badge/version-0.7.0-blue?style=plastic)
+![Language Python 3.13.0](https://img.shields.io/badge/python-3.13.0-orange?style=plastic&logo=python)
 
 Common library used in several project
 

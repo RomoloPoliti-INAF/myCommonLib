@@ -1,36 +1,28 @@
-[project]
+[tool.poetry]
 name = "MyCommonLib"
-version = "0.6.0"
-description="Common library"
-dependencies = [
-    "rich",
-    "PyYaml", 
-    'setuptools',
-    'importlib-metadata; python_version>"3.10"',
-]
-
-authors = [{name="Romolo Politi", email ="Romolo.Politi@inaf.it" }]
-license = {text = "GNU GPL ver3"} 
+version = "0.7.0"
+description = "Common library"
+authors = ["Romolo Politi <romolo.politi@inaf.it>"]
+license = "GPL-3.0-or-later"
 readme = "README.md"
-
-
 keywords = ["SETUP LIBS"]
 classifiers = [
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
 ]
+repository = "https://github.com/RomoloPoliti-INAF/myCommonLib"
+include = ["CHANGELOG.md"]
+packages=[{include = "MyCommonLib", from="src"}]
 
-[project.urls]
-Repository = "https://github.com/RomoloPoliti-INAF/myCommonLib"
-Changelog = "https://github.com/RomoloPoliti-INAF/myCommonLib/blob/main/CHANGELOG.md"
-
-[project.optional-dependencies]
-docs = ["sphinx"]
-
+[tool.poetry.dependencies]
+python = "^3.13"
+rich = "^13.9.4"
+pyyaml = "^6.0.2"
+setuptools = "^75.5.0"
 
 
 [build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
 
-
-
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/RomoloPoliti-INAF/myCommonLib/issues"

@@ -1,5 +1,11 @@
 # MyCommonLib
 
+## Version 0.7.0
+
+- Ported the project to poetry
+- version support string version (to get version from pyproject)
+- update publish workflow for poetry package
+
 ## Version 0.6.0
 
 - Added three functions for the string manipulation:

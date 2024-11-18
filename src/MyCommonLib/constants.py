@@ -1,7 +1,9 @@
 from rich.progress import BarColumn, SpinnerColumn, TimeElapsedColumn
 from pathlib import Path
+import pkg_resources
 
-VERSION = (0, 6, 0, 'f', 1)
+
+VERSION = pkg_resources.get_distribution('MyCommonLib').version
 
 progEpilog = "- For any information or suggestion please contact " \
     "[bold magenta]Romolo.Politi@inaf.it[/bold magenta]"
