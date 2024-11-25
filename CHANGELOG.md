@@ -1,5 +1,9 @@
 # MyCommonLib
 
+## Version 0.7.1
+
+- fix requirements
+
 ## Version 0.7.0
 
 - Ported the project to poetry
