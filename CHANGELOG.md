@@ -1,5 +1,9 @@
 # MyCommonLib
 
+## Version 0.7.3
+
+- fix bug in  Python version
+
 ## Version 0.7.2
 
 - add test on Vers class
