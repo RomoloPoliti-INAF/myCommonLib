@@ -1,5 +1,11 @@
 # MyCommonLib
 
+## Version 0.7.2
+
+- add test on Vers class
+- fixed the regex for the version
+- fixed bugs in the comparison methods
+
 ## Version 0.7.1
 
 - fix requirements

@@ -3,7 +3,7 @@ import re
 # Versioning Class
 ###################################
 #
-# This class is used to manage the versioning of the 
+# This class is used to manage the versioning of the
 # software or other products
 #
 # The versioning is based on the Semantic Versioning 2.0.0
@@ -44,8 +44,9 @@ class Vers:
 
     def __init__(self, ver: tuple | str) -> None:
         if isinstance(ver, str):
-            a= re.match(r'(\d+)\.(\d+)(?:\.(\d+))?(?:-(\w+)(?:\.(\d+))?)?', ver)
+            a= re.match(r'(\d+)\.(\d+)(?:\.(\d+))?(?:[-\.](\w+)(?:\.(\d+))?)?', ver)
             prt=list(a.groups())
+            prt[0:3]=[int(i) for i in prt[0:3]]
             if prt[3] is not None :
                 if prt[3].lower() in 'development':
                     prt[3]='d'
@@ -61,8 +62,9 @@ class Vers:
                 prt[3]='f'
             if prt[3] is not None and prt[4] is None:
                 prt[4]=1
+            prt[4] = int(prt[4])
             ver = tuple(prt)
-        
+
         self._len = 3
         if len(ver) < 3:
             self.major, self.minor, *extra = ver
@@ -134,8 +136,8 @@ class Vers:
             return self.major > other.major
         elif self.minor != other.minor:
             return self.minor > other.minor
-        elif self.patch != other.path:
-            return self.path > other.path
+        elif self.patch != other.patch:
+            return self.patch > other.patch
         elif numeric_map[self.type] != numeric_map[other.type]:
             return numeric_map[self.type] > numeric_map[other.type]
         else:
