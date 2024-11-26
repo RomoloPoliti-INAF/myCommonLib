@@ -30,7 +30,7 @@ def test_comparison_ne():
     a=Vers((1,2,3,'d',1))
     b=Vers('1.2.3-d.2')
     assert a!=b
-    
+
 def test_comparison_gt():
     a=Vers((1,2,3,'d',1))
     b=Vers('1.2.3-d.0')
@@ -45,13 +45,17 @@ def test_comparison_ge():
     a = Vers((1, 2, 3, 'd', 1))
     b = Vers('1.2.3-d.1')
     assert a >= b
-    
+
 def test_comparison_lt():
     a = Vers((1, 2, 3, 'd', 1))
     b = Vers('1.2.3-d.2')
     assert a < b
-    
+
 def test_comparison_le():
     a = Vers((1, 2, 3, 'd', 1))
     b = Vers('1.2.3-d.1')
     assert a <= b
+
+def test_adarp():
+    a = Vers("0.3.0-dev10")
+    assert a.full()== '0.3.0-devel.10'

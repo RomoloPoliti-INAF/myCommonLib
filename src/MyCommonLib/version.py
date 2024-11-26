@@ -44,7 +44,7 @@ class Vers:
 
     def __init__(self, ver: tuple | str) -> None:
         if isinstance(ver, str):
-            a= re.match(r'(\d+)\.(\d+)(?:\.(\d+))?(?:[-\.](\w+)(?:\.(\d+))?)?', ver)
+            a= re.match(r'(\d+)\.(\d+)(?:\.(\d+))?(?:[-\.]([a-zA-Z]*)(?:\.?(\d+))?)?', ver)
             prt=list(a.groups())
             prt[0:3]=[int(i) for i in prt[0:3]]
             if prt[3] is not None :

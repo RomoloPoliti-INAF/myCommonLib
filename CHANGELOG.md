@@ -1,5 +1,9 @@
 # MyCommonLib
 
+## Version 0.7.5
+
+-fix regex expression
+
 ## Version 0.7.4
 
 - fix bug in  Python version
