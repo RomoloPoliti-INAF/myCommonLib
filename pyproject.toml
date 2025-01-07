@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "MyCommonLib"
-version = "0.7.5"
+version = "0.7.6"
 description = "Common library"
 authors = ["Romolo Politi <romolo.politi@inaf.it>"]
 license = "GPL-3.0-or-later"
@@ -14,7 +14,7 @@ include = ["CHANGELOG.md"]
 packages=[{include = "MyCommonLib", from="src"}]
 
 [tool.poetry.dependencies]
-python = ">=3.9,<=3.13"
+python = ">=3.9,<3.14"
 rich = "^13.9.4"
 pyyaml = "^6.0.2"
 setuptools = "^75.5.0"
