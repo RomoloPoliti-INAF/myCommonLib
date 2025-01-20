@@ -1,5 +1,9 @@
 # MyCommonLib
 
+## Version 0.7.7
+
+- fix bug in Vers.short() method
+
 ## Version 0.7.6
 
 - fix problem with Python version

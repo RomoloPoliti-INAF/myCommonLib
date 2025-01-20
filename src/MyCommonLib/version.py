@@ -107,7 +107,7 @@ class Vers:
         Returns:
             str: the version string
         """
-        return f"{self.major}.{self.minor}.{{f'.{self.patch}' if self._len==3 else ''}}"
+        return f"{self.major}.{self.minor}.{f'.{self.patch}' if self._len==3 else ''}"
 
     def __repr__(self) -> str:
         return f"Version {self.full()}"
