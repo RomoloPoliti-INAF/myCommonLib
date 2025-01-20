@@ -1,5 +1,9 @@
 # MyCommonLib
 
+## Version 0.7.8
+
+- removed a dot in the version number
+
 ## Version 0.7.7
 
 - fix bug in Vers.short() method
