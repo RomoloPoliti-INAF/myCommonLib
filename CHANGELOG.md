@@ -1,5 +1,10 @@
 # MyCommonLib
 
+## Version 0.8.0 (2025-03-05)
+
+- removed the module version
+- imported the semantic-version-tools package
+
 ## Version 0.7.8
 
 - removed a dot in the version number

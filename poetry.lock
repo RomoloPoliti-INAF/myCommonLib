@@ -131,6 +131,17 @@ typing-extensions = {version = ">=4.0.0,<5.0", markers = "python_version < \"3.1
 jupyter = ["ipywidgets (>=7.5.1,<9)"]
 
 [[package]]
+name = "semantic-version-tools"
+version = "1.3.1"
+description = "Class to manage semantic versioning"
+optional = false
+python-versions = "<3.14,>=3.10"
+files = [
+    {file = "semantic_version_tools-1.3.1-py3-none-any.whl", hash = "sha256:ada1f069bf55c3e9363dfe6bc4d986c8b55f64bdb8735303ba3d8de0c639f898"},
+    {file = "semantic_version_tools-1.3.1.tar.gz", hash = "sha256:8fca2fcb132b8e9d8b755abc51ab90a9d78411cf285fa781083d16a1bd58f8fe"},
+]
+
+[[package]]
 name = "setuptools"
 version = "75.6.0"
 description = "Easily download, build, install, upgrade, and uninstall Python packages"
@@ -163,5 +174,5 @@ files = [
 
 [metadata]
 lock-version = "2.0"
-python-versions = ">=3.9,<=3.13"
-content-hash = "bbd99ac539f05d94155c0cc30922052e529059a708ef5365214a12560c422928"
+python-versions = ">=3.10,<3.14"
+content-hash = "bf892de5646d1f376b92b793c383e4c3e893789fb4a7efe7cffb49412ea93420"
