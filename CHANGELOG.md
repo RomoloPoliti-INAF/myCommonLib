@@ -1,5 +1,9 @@
 # MyCommonLib
 
+## Version 0.8.1 (2025-06-12)
+
+- update dependecies for GitHub security alert digest on setup tolls
+
 ## Version 0.8.0 (2025-03-05)
 
 - removed the module version
