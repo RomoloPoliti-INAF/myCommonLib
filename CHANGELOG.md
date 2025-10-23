@@ -1,5 +1,10 @@
 # MyCommonLib
 
+## Version 0.8.6
+
+- Update requirements
+- replace pkg_resources with importlib
+
 ## Version 0.8.1 (2025-06-12)
 
 - update dependecies for GitHub security alert digest on setup tolls
