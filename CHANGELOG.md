@@ -1,5 +1,13 @@
 # MyCommonLib
 
+## Version 0.8.9
+
+- updated semantic-version-tools
+
+## Version 0.8.8
+
+- update required Python in pyproject (>=3.10" -> >=3.10,<4.0")
+
 ## Version 0.8.6
 
 - Update requirements
