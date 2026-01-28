@@ -10,16 +10,18 @@ from MyCommonLib.software_mode import softMode
 from MyCommonLib.constants import COLOR, FMODE, defLogFile
 from MyCommonLib.dictman import dict2Table
 from MyCommonLib.loginit import logInit
+from MyCommonLib.customLogger import CustomLogger
+import _io
 
 
 class Loader(yaml.SafeLoader):
     """Add to the YAML standar class the command !include to include slave yaml file"""
 
-    def __init__(self, stream):
+    def __init__(self, stream:_io.BufferedReader):
         self._root = path.split(stream.name)[0]
         super(Loader, self).__init__(stream)
 
-    def include(self, node):
+    def include(self, node)-> dict:
         filename = path.join(self._root, self.construct_scalar(node))
         with open(filename, 'r') as f:
             return yaml.load(f, Loader)
@@ -50,12 +52,12 @@ def read_yaml(fileName: Path) -> dict:
         return yaml.load(f, Loader)
 
 
-def write_yaml(data:dict, fileName:Path, overwrite:bool=False):
+def write_yaml(data:dict, fileName:Path|str, overwrite:bool=False)-> None:
 
-    if not type(data) is dict:
+    if isinstance(data, dict) is False:
         raise TypeError
-    if type(fileName) is str:
-        fileName=Path(fileName)
+    
+    fileName=Path(fileName)
     if fileName.exists() and not overwrite:
         raise FileExistsError
     with open(fileName, FMODE.WRITE) as file:
@@ -64,27 +66,26 @@ def write_yaml(data:dict, fileName:Path, overwrite:bool=False):
 
 class Configure:
     """Configuration class"""
-    
-    configFile:Path = None
-    """Name of the configuration file to load"""
+
+
     
     def __init__(self):
         self._name = "Software Configuration"
-        self._logger = 'MyLogger'
-        self._debug = False
-        self._verbose = 0
-        self.configFile = None
-        self._logFile = None
+        self._logger:str = 'MyLogger'
+        self._debug: bool = False
+        self._verbose: int = 0
+        self.configFile:Path|None = None
+        self._logFile:Path|None = None
         self.console: Console = softMode.console
-        self._dict_exclude=['log']
-        self.log=None
+        self._dict_exclude:list=['log']
+        self.log:CustomLogger
         self.log_mode = FMODE.APPEND
-        self.log_formatter = '{asctime} | {levelname:8} | {name:10} | {module:12} | {funcName:20} | {lineno:4} | {message}'
+        self.log_formatter: str = '{asctime} | {levelname:8} | {name:10} | {module:12} | {funcName:20} | {lineno:4} | {message}'
         
     def start_log(self,file_mode: str = FMODE.APPEND):
         self.log = logInit(logger=self._logger,
                            logLevel=logging.INFO,
-                           formatter=self.log_formatter,
+                           out_format=self.log_formatter,
                            fileMode=file_mode)
 
     @property
@@ -92,18 +93,20 @@ class Configure:
         return self._logFile
 
     @logFile.setter
-    def logFile(self, value: Path):
-        
+    def logFile(self, value: Path|str):
+        if isinstance(value, str):
+            value = Path(value)
         self._logFile = value.expanduser()
         if not self._logFile.parent.exists():
             self._logFile.parent.mkdir(parents=True)
-        self.log.removeHandler(self.log.handlers[0])
-        file_handler = logging.FileHandler(self._logFile, mode=self.log_mode)
-        formatter = logging.Formatter(self.log_formatter,
-                                      datefmt='%m/%d/%Y %I:%M:%S %p',
-                                      style="{")
-        file_handler.setFormatter(formatter)
-        self.log.addHandler(file_handler)
+        if self.log is not None:
+            self.log.removeHandler(self.log.handlers[0])
+            file_handler = logging.FileHandler(self._logFile, mode=self.log_mode)
+            formatter = logging.Formatter(self.log_formatter,
+                                          datefmt='%m/%d/%Y %I:%M:%S %p',
+                                          style="{")
+            file_handler.setFormatter(formatter)
+            self.log.addHandler(file_handler)
         # self.log = logInit(logFile=value, logger=self._logger,
         #                    logLevel=logging.INFO, fileMode=FMODE.APPEND)
         self.log_file = value.as_posix()
@@ -116,12 +119,12 @@ class Configure:
     def debug(self, value):
         self._debug = value
         if value:
-            if self._logFile is not None:
+            if self._logFile is not None and self.log is not None:
                 self.log.setLevel(logging.DEBUG)
                 self.log.debug("Set the loglevel to Debug", verbosity=1)
             softMode.debug = value
         else:
-            if self._logFile is not None:
+            if self._logFile is not None and self.log is not None:
                 self.log.setLevel(logging.INFO)
             softMode.debug = False
         self.debug_status = value
@@ -165,8 +168,8 @@ class Configure:
                    expand=False, border_style=COLOR.panel)
         self.console.print(pn)
 
-    def setLog(self, value: Path = None, default: bool = False):
+    def setLog(self, value: Path|None = None, default: bool = False):
         if default:
-            self.logFile = Path('/var/log').joinpath(defLogFile)
+            self.logFile = Path('/tmp/log').joinpath(defLogFile)
         else:
-            self.logFile = value
+            self.logFile = Path(value).expanduser() #type:ignore

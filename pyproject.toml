@@ -1,6 +1,6 @@
 [project]
 name = "MyCommonLib"
-version = "0.8.9"
+version = "0.8.11"
 description = "Common library"
 authors = [{name= "Romolo Politi", email= "romolo.politi@inaf.it"}]
 license = "GPL-3.0-or-later"
@@ -35,3 +35,8 @@ packages=[{include = "MyCommonLib", from="src"}]
 
 
 
+
+[dependency-groups]
+devel = [
+    "pytest (>=9.0.2,<10.0.0)"
+]
