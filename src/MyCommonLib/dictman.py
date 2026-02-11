@@ -17,11 +17,11 @@ def conv(txt: str):
     return ' '.join(txt.split('_')).title()
 
 
-def dict2Table(item: dict, sep: str = '=') -> Table:
+def dict2Table(item: dict, sep: str = '=', label_style: str = "bold") -> Table:
     if not isinstance(item, dict):
         raise ValueError("item must be a dictionary")
     dt = Table.grid()
-    dt.add_column(style="bold", justify='right')
+    dt.add_column(style=label_style, justify='right')
     dt.add_column()
     dt.add_column()
     for elem in item.keys():

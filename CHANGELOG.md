@@ -1,5 +1,9 @@
 # MyCommonLib
 
+## Version 0.8.12
+
+- added the keyword label_style to the function *dicman.dic2table*
+
 ## Version 0.8.10
 
 - 
